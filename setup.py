@@ -14,7 +14,13 @@ setup(
         ("share/ament_index/resource_index/packages", [f"resource/{package_name}"]),
         (f"share/{package_name}", ["package.xml"]),
         (os.path.join("share", package_name, "config"), glob("config/*.yaml")),
+        (os.path.join("share", package_name, "docs"), glob("docs/*.md")),
         (os.path.join("share", package_name, "launch"), glob("launch/*.launch.py")),
+        (os.path.join("share", package_name, "worlds"), glob("worlds/*.sdf")),
+        (
+            os.path.join("share", package_name, "models", "coordination_diffbot"),
+            glob("models/coordination_diffbot/*"),
+        ),
     ],
     install_requires=["setuptools"],
     zip_safe=True,
@@ -26,6 +32,7 @@ setup(
     entry_points={
         "console_scripts": [
             "coordinator = multi_robot_coordination_demo.coordinator_node:main",
+            "gazebo_robot_agent = multi_robot_coordination_demo.gazebo_robot_agent_node:main",
             "robot_agent = multi_robot_coordination_demo.robot_agent_node:main",
         ],
     },

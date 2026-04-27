@@ -54,6 +54,40 @@ source ~/ros2_ws/install/setup.bash
 ros2 topic echo /coordination/events
 ```
 
+## Gazebo Sim Demo
+
+This repository also includes an optional Gazebo Sim launch path. It uses modern `ros_gz_sim` and `ros_gz_bridge` instead of Gazebo Classic.
+
+Install the ROS-Gazebo integration packages for your ROS 2 distribution:
+
+```bash
+sudo apt install ros-$ROS_DISTRO-ros-gz ros-$ROS_DISTRO-ros-gz-sim ros-$ROS_DISTRO-ros-gz-bridge
+```
+
+Then build and launch:
+
+```bash
+colcon build --packages-select multi_robot_coordination_demo
+source install/setup.bash
+ros2 launch multi_robot_coordination_demo gazebo_demo.launch.py
+```
+
+For older ROS 2 / Gazebo pairings whose bridge still uses `ignition.msgs`, launch with:
+
+```bash
+ros2 launch multi_robot_coordination_demo gazebo_demo.launch.py gz_msg_prefix:=ignition.msgs
+```
+
+The Gazebo launch starts:
+
+- `worlds/coordination_arena.sdf`
+- one `models/coordination_diffbot` instance per robot in `config/robots.yaml`
+- the existing coordinator
+- Gazebo-specific robot agents that follow assignments with `/model/<robot>/cmd_vel`
+- ROS-Gazebo bridges for `/clock`, odometry, and velocity commands
+
+See `docs/gazebo-simulation.md` for the integration details.
+
 ## Topics
 
 Each robot is launched in its own namespace:
@@ -96,7 +130,6 @@ The included tests exercise pure Python coordination helpers, so they run quickl
 
 Good extensions for this mini demo:
 
-- Add Gazebo Sim robots with `ros_gz`.
 - Replace JSON payloads with typed ROS 2 interfaces.
 - Add Nav2 for map-aware multi-robot navigation.
 - Add task priorities, cancellation, and charging behavior.

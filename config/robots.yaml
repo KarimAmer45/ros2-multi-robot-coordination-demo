@@ -1,0 +1,22 @@
+coordinator:
+  assignment_period_sec: 1.0
+  reservation_radius: 0.75
+
+robots:
+  - name: robot_1
+    initial_pose: [0.0, 0.0, 0.0]
+  - name: robot_2
+    initial_pose: [0.0, 2.0, 0.0]
+  - name: robot_3
+    initial_pose: [-1.5, -1.0, 0.0]
+
+tasks:
+  - id: inspect_loading_bay
+    pose: [2.0, 0.5, 0.0]
+  - id: scan_north_aisle
+    pose: [3.5, 2.0, 0.0]
+  - id: check_south_aisle
+    pose: [2.5, -1.5, 0.0]
+  - id: return_to_staging
+    pose: [0.5, 1.0, 0.0]
+

@@ -134,21 +134,21 @@ Good extensions for this mini demo:
 - Add Nav2 for map-aware multi-robot navigation.
 - Add task priorities, cancellation, and charging behavior.
 
-## Example output
+## Coordination output
 
 ![ros2-multi-robot-coordination-demo result screenshot](docs/results/result-screenshot.png)
 
 Coordination event flow for namespaced robot agents and task assignment.
 
 
-## Coordination model
+## Task-allocation notes
 
 - Multiple ROS 2 robot agents running under separate namespaces.
 - Coordinator-style task assignment with shared event/status topics.
 - A Gazebo simulation path for showing robot state changes visually.
 
 
-## Validation and next steps
+## Simulation limits
 
 - The coordination policy is intentionally small and deterministic.
 - No real fleet scheduler, map sharing, or collision-avoidance stack is included.

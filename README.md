@@ -4,6 +4,12 @@ A compact ROS 2 demo that coordinates multiple simulated robots with waypoint as
 
 The demo uses only standard ROS 2 message packages, so it is easy to build, inspect, and extend without creating custom interfaces first.
 
+## Demo Preview
+
+![ROS2 multi-robot coordination preview](docs/demo.gif)
+
+Preview animation of the coordination loop: queued tasks, namespaced robot agents, goal reservations, and event/status updates.
+
 ## Features
 
 - Coordinator node assigns queued waypoint tasks to idle robots.
